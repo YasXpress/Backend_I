@@ -11,7 +11,10 @@ dotenv.config()
 const app = express();
 
 // ✅ CORS (handles Vercel + local + no-origin requests)
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173','https://frontend-8lmfbxna6-yasxpress-projects.vercel.app'],
+  credentials: true
+}));
 
 app.use(express.json());
 
@@ -113,7 +116,6 @@ app.get("/", (req, res) => {
 
 
 // ✅ SERVER START
-//const PORT = process.env.PORT || 5000;
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
